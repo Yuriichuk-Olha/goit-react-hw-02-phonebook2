@@ -14,7 +14,7 @@ class Contacts extends Component {
   };
 
   handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault(); 
     //  !=================================================
     //              можна ще так якщо є тільки name, number
     //         2 sposib    this.props.creatUser(this.state)
@@ -25,6 +25,8 @@ class Contacts extends Component {
       number: this.state.number,
     });
     //==============
+  
+
 
     this.setState({
       name: '',

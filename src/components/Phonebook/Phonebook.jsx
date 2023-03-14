@@ -8,7 +8,6 @@ import Filter from 'components/Filter/Filter';
 
 class Phonebook extends Component {
   // static defaultProps = {
-
   // }
   state = {
     contacts: [
@@ -27,10 +26,21 @@ class Phonebook extends Component {
       ...user,
       id: nanoid(),
     };
-    //   console.log(newUser)
+    //======
+    const existUser = this.state.contacts.find(
+          contact => contact.name === user.name
+        );
+      
+        if (existUser) {
+        return  alert("This name already exists!");
+          
+      }
+      //========
     this.setState(prevState => ({
       contacts: [newUser, ...prevState.contacts],
+     
     }));
+   
   };
 
   deletList = contactId => {
@@ -49,8 +59,10 @@ class Phonebook extends Component {
 
     const visibleContact = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
+     
     );
     return visibleContact;
+    
   };
 
   render() {
@@ -61,7 +73,6 @@ class Phonebook extends Component {
       <div>
         <h1>Phonebook</h1>
         <Contacts creatUser={this.creatUser} />
-
         <h2>Contact</h2>
         <Filter value={filter} onChange={this.changeFilter} />
 
